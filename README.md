@@ -26,7 +26,7 @@ The project contains a number of important files:
 2. **App.js** - the app component.
 3. **index.js** - the base JavaScript file, which renders the whole app.
 
-## Dependencies
+## Dependencies
 
 This project utilises several dependencies:
 
