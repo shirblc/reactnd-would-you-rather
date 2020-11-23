@@ -3,6 +3,7 @@ import './App.css';
 import { getInitialData as getQuestions } from '../actions/questions';
 import { getInitialData as getUsers } from '../actions/users';
 import { connect } from 'react-redux';
+import Home from './Home';
 
 class App extends React.Component {
 	componentDidMount() {
@@ -18,7 +19,7 @@ class App extends React.Component {
 					// if the data was fetched from the API into the state, check for currently logged in user
 					this.props.loading === false && (
 						this.props.currentUser 
-						? <div>Welcome, { this.props.currentUser }</div>
+						? <Home userID={this.props.currentUser}/>
 						: <div>login</div>
 					)
 				 }
