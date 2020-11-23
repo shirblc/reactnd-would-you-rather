@@ -1,16 +1,40 @@
+// React / Redux imports
 import React from 'react';
 import { connect } from 'react-redux';
 
+// App imports
+import { login } from '../actions/currentUser';
+
 class LoginPage extends React.Component {
+	// CTOR
+	constructor(props) {
+		super(props);
+		this.onUpdate = this.updateID.bind(this);
+		this.onSubmit = this.logIn.bind(this);
+	}
+	
 	state = {
 		userID: ''
+	}
+	
+	// Update the currently selected user ID
+	updateID(event) {
+		this.setState({
+			userID: event.target.value
+		});
+	}
+	
+	// Trigger login: change the currentUser to the selected user
+	logIn(event) {
+		event.preventDefault();
+		this.props.dispatch(login(this.state.userID));
 	}
 
 	// Render method
 	render() {
 		return (
-			<form>
-				<select value={this.state.userID}>
+			<form onSubmit={this.onSubmit}>
+				<select value={this.state.userID} onChange={this.onUpdate}>
 					<option value=''>Login as:</option>
 					{
 						this.props.users.map(user => (
