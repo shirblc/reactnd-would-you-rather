@@ -14,9 +14,26 @@ class App extends React.Component {
 		 return (
 			 <div className="App">
 				 Would You Rather
+				 {
+					// if the data was fetched from the API into the state, check for currently logged in user
+					this.props.loading === false && (
+						this.props.currentUser 
+						? <div>Welcome, { this.props.currentUser }</div>
+						: <div>login</div>
+					)
+				 }
 			 </div>
 		 );
 	}
 }
 
-export default connect()(App);
+// Map State to Props
+// Checks whether users' data has been fetched and whether there's a logged in user
+function mapStateToProps({users, currentUser}) {
+	return {
+		loading: Object.keys(users).length === 0,
+		currentUser: currentUser
+	}
+}
+
+export default connect(mapStateToProps)(App);
