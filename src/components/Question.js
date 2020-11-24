@@ -7,7 +7,7 @@ class Question extends React.Component {
 		return (
 			<div>
 				<h3>Would you rather...</h3>
-				<button>{ this.props.question.optionOne.text }</button>
+				<button disabled={this.props.answered === true}>{ this.props.question.optionOne.text }</button>
 				{ this.props.answered &&
 					<div className='stats'>
 						<div>Number of votes: { this.props.question.optionOne.votes.length }</div>
@@ -15,7 +15,7 @@ class Question extends React.Component {
 					</div>
 				}
 				<div>or</div>
-				<button>{ this.props.question.optionTwo.text }</button>
+				<button disabled={this.props.answered === true}>{ this.props.question.optionTwo.text }</button>
 				{ this.props.answered &&
 					<div className='stats'>
 						<div>Number of votes: { this.props.question.optionTwo.votes.length }</div>
