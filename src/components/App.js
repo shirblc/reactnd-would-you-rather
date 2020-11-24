@@ -24,18 +24,22 @@ class App extends React.Component {
 	render() {
 		 return (
 			 <div className="App">
-				 Would You Rather
+				 <div className="App-header">
+					 <h1>Would You Rather</h1>
+				 </div>
 				 {
 					// if the data was fetched from the API into the state, check for currently logged in user
 					this.props.loading === false && (
 						this.props.currentUser 
-						? <div>
+						? <div className="content">
 							<Route exact path='/' render={() => (
 									<Home userID={this.props.currentUser}/>
 								)} />
 							<Route path='/question/:id' component={Question} />
 						</div>
-						: <LoginPage />
+						: <div className="content">
+							<LoginPage />
+						</div>
 					)
 				 }
 			 </div>

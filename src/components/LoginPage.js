@@ -33,7 +33,7 @@ class LoginPage extends React.Component {
 	// Render method
 	render() {
 		return (
-			<form onSubmit={this.onSubmit}>
+			<form onSubmit={this.onSubmit} id='loginForm'>
 				<select value={this.state.userID} onChange={this.onUpdate}>
 					<option value=''>Login as:</option>
 					{

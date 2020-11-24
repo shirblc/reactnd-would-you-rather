@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
 	render() {
-		return (<div>
+		return (<div id='dashboard'>
 			<h2>{`${this.props.currentUser.name}'s Questions`}</h2>
-			<div>
+			<div className='questionList'>
 				<h3>Unanswered Questions</h3>
 				<ul>
 					{
@@ -16,7 +16,7 @@ class Home extends React.Component {
 					}
 				</ul>
 			</div>
-			<div>
+			<div className='questionList'>
 				<h3>Answered Questions</h3>
 				<ul>
 					{
