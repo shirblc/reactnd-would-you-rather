@@ -16,9 +16,9 @@ class Question extends React.Component {
 
 // Map State to Props
 // Get the details of the specific question
-function mapStateToProps({ questions, currentUser }, { questionID }) {
+function mapStateToProps({ questions, currentUser }, { match }) {
 	return {
-		question: questions[questionID],
+		question: questions[match.params.id],
 		currentUser: currentUser
 	}
 }

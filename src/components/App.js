@@ -3,11 +3,13 @@ import React from 'react';
 import { getInitialData as getQuestions } from '../actions/questions';
 import { getInitialData as getUsers } from '../actions/users';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 
 // App imports
 import './App.css';
 import Home from './Home';
 import LoginPage from './LoginPage';
+import Question from './Question';
 
 class App extends React.Component {
 	componentDidMount() {
@@ -23,7 +25,12 @@ class App extends React.Component {
 					// if the data was fetched from the API into the state, check for currently logged in user
 					this.props.loading === false && (
 						this.props.currentUser 
-						? <Home userID={this.props.currentUser}/>
+						? <div>
+							<Route exact path='/' render={() => (
+									<Home userID={this.props.currentUser}/>
+								)} />
+							<Route path='/question/:id' component={Question} />
+						</div>
 						: <LoginPage />
 					)
 				 }
