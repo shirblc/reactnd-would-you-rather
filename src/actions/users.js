@@ -21,9 +21,13 @@ function addInitialData(data) {
 }
 
 // Action creator to add the user's response
-export function updateUser(user) {
+export function updateUser(questionData) {
+	const { authedUser, qid, answer } = questionData;
+	
 	return {
-		tupe: UPDATE_USER,
-		user
+		type: UPDATE_USER,
+		authedUser,
+		qid,
+		answer
 	}
 }

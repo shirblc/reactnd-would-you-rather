@@ -8,7 +8,16 @@ export default function questionsReducer(state = {}, action) {
 			return { ...state, ...action.questions }
 		// if the action is answering a question, update the question's data
 		case UPDATE_QUESTION:
-			return { ...state, ...action.question }
+			return { 
+				...state,
+				[action.qid]: {
+					...state[action.qid],
+					[action.answer]: {
+						...state[action.qid][action.answer],
+						votes: [ ...state[action.qid][action.answer].votes, action.authedUser ]
+					}
+				}
+			}
 		// otherwise return the state
 		default:
 			return state
