@@ -6,15 +6,15 @@ import { connect } from 'react-redux';
 import { login } from '../actions/currentUser';
 
 class LoginPage extends React.Component {
+	state = {
+		userID: ''
+	}
+
 	// CTOR
 	constructor(props) {
 		super(props);
 		this.onUpdate = this.updateID.bind(this);
 		this.onSubmit = this.logIn.bind(this);
-	}
-	
-	state = {
-		userID: ''
 	}
 	
 	// Update the currently selected user ID
