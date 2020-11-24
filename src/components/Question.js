@@ -22,8 +22,8 @@ class Question extends React.Component {
 				<h3>Would you rather...</h3>
 				{
 					Object.entries(this.props.question.options).map(entry => (
-						<div className='answer'>
-							<button key={entry[0]} id={entry[0]} disabled={this.props.answered === true} onClick={(e) => (this.answerQuestion(e.target.id))}>{ entry[1].text }</button>
+						<div className='answer' key={entry[0]}>
+							<button id={entry[0]} disabled={this.props.answered === true} onClick={(e) => (this.answerQuestion(e.target.id))}>{ entry[1].text }</button>
 							{ 
 								this.props.answered &&
 								<div className='stats'>
