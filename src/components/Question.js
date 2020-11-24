@@ -24,7 +24,7 @@ class Question extends React.Component {
 				{ this.props.answered &&
 					<div className='stats'>
 						<div>Number of votes: { this.props.question.optionOne.votes.length }</div>
-						<div>{ this.props.question.optionOne.votes.length / this.props.totalVotes * 100 }% chose this answer.</div>
+						<div>{ (this.props.question.optionOne.votes.length / this.props.totalVotes * 100).toFixed(2) }% chose this answer.</div>
 					</div>
 				}
 				<div>or</div>
@@ -32,7 +32,7 @@ class Question extends React.Component {
 				{ this.props.answered &&
 					<div className='stats'>
 						<div>Number of votes: { this.props.question.optionTwo.votes.length }</div>
-						<div>{ this.props.question.optionTwo.votes.length / this.props.totalVotes * 100 }% chose this answer.</div>
+						<div>{ (this.props.question.optionTwo.votes.length / this.props.totalVotes * 100).toFixed(2) }% chose this answer.</div>
 					</div>
 				}
 			</div>
