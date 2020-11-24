@@ -1,13 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { addAnswer } from '../actions/shared';
 
 class Question extends React.Component {
+	// Handles user click on one of the response buttons
+	answerQuestion(userResponse) {
+		this.props.dispatch(addAnswer({
+			authedUser: this.props.currentUser,
+			qid: this.props.match.params.id, 
+			answer: userResponse
+		}));
+	}
+	
 	// render
 	render() {
 		return (
 			<div>
 				<h3>Would you rather...</h3>
-				<button disabled={this.props.answered === true}>{ this.props.question.optionOne.text }</button>
+				<button id='optionOne' disabled={this.props.answered === true} onClick={(e) => (this.answerQuestion(e.target.id))}>{ this.props.question.optionOne.text }</button>
 				{ this.props.answered &&
 					<div className='stats'>
 						<div>Number of votes: { this.props.question.optionOne.votes.length }</div>
@@ -15,7 +25,7 @@ class Question extends React.Component {
 					</div>
 				}
 				<div>or</div>
-				<button disabled={this.props.answered === true}>{ this.props.question.optionTwo.text }</button>
+				<button id='optionTwo' disabled={this.props.answered === true} onClick={(e) => (this.answerQuestion(e.target.id))}>{ this.props.question.optionTwo.text }</button>
 				{ this.props.answered &&
 					<div className='stats'>
 						<div>Number of votes: { this.props.question.optionTwo.votes.length }</div>
