@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addAnswer } from '../actions/shared';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Question extends React.Component {
 	// Handles user click on one of the response buttons
@@ -16,6 +18,7 @@ class Question extends React.Component {
 	render() {
 		return (
 			<div>
+				<Link to='/'><FontAwesomeIcon icon='arrow-left'/></Link>
 				<h3>Would you rather...</h3>
 				<button id='optionOne' disabled={this.props.answered === true} onClick={(e) => (this.answerQuestion(e.target.id))}>{ this.props.question.optionOne.text }</button>
 				{ this.props.answered &&
