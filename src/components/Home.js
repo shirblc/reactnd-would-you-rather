@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
 	render() {
@@ -10,7 +11,7 @@ class Home extends React.Component {
 				<ul>
 					{
 						this.props.questions.filter(q => q.answered === false).map(question => (
-							<li key={question.id}>{ question.option1 + ' or ' + question.option2 }</li>
+							<li key={question.id}><Link to={`/question/${question.id}`}>{ question.option1 + ' or ' + question.option2 }</Link></li>
 						))
 					}
 				</ul>
@@ -20,7 +21,7 @@ class Home extends React.Component {
 				<ul>
 					{
 						this.props.questions.filter(q => q.answered === true).map(question => (
-							<li key={question.id}>{ question.option1 + ' or ' + question.option2 }</li>
+							<li key={question.id}><Link to={`/question/${question.id}`}>{ question.option1 + ' or ' + question.option2 }</Link></li>
 						))
 					}
 				</ul>
