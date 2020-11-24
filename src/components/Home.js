@@ -32,15 +32,15 @@ class Home extends React.Component {
 
 // Map State to Props
 // Gets the current user and a list of answered / unanswered questions for that user
-function mapStateToProps({ users, questions }, { userID }) {
+function mapStateToProps({ users, questions, currentUser }) {
 	return {
-		currentUser: users[userID],
+		currentUser: users[currentUser],
 		questions: Object.entries(questions).map(entry => {
 			// return the options, the question's ID and whether or not the user already chose an answer
 			return {
 				option1: entry[1].optionOne.text, 
 				option2: entry[1].optionTwo.text,
-				answered: entry[1].optionOne.votes.includes(userID) || entry[1].optionTwo.votes.includes(userID),
+				answered: entry[1].optionOne.votes.includes(currentUser) || entry[1].optionTwo.votes.includes(currentUser),
 				id: entry[0]
 			}
 		})

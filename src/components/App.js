@@ -32,9 +32,7 @@ class App extends React.Component {
 					this.props.loading === false && (
 						this.props.currentUser 
 						? <div className="content">
-							<Route exact path='/' render={() => (
-									<Home userID={this.props.currentUser}/>
-								)} />
+							<Route exact path='/' component={Home} />
 							<Route path='/question/:id' component={Question} />
 						</div>
 						: <div className="content">
