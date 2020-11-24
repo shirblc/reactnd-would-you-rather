@@ -20,20 +20,19 @@ class Question extends React.Component {
 			<div>
 				<Link to='/'><FontAwesomeIcon icon='arrow-left'/></Link>
 				<h3>Would you rather...</h3>
-				<button id='optionOne' disabled={this.props.answered === true} onClick={(e) => (this.answerQuestion(e.target.id))}>{ this.props.question.optionOne.text }</button>
-				{ this.props.answered &&
-					<div className='stats'>
-						<div>Number of votes: { this.props.question.optionOne.votes.length }</div>
-						<div>{ (this.props.question.optionOne.votes.length / this.props.totalVotes * 100).toFixed(2) }% chose this answer.</div>
-					</div>
-				}
-				<div>or</div>
-				<button id='optionTwo' disabled={this.props.answered === true} onClick={(e) => (this.answerQuestion(e.target.id))}>{ this.props.question.optionTwo.text }</button>
-				{ this.props.answered &&
-					<div className='stats'>
-						<div>Number of votes: { this.props.question.optionTwo.votes.length }</div>
-						<div>{ (this.props.question.optionTwo.votes.length / this.props.totalVotes * 100).toFixed(2) }% chose this answer.</div>
-					</div>
+				{
+					Object.entries(this.props.question.options).map(entry => (
+						<div className='answer'>
+							<button key={entry[0]} id={entry[0]} disabled={this.props.answered === true} onClick={(e) => (this.answerQuestion(e.target.id))}>{ entry[1].text }</button>
+							{ 
+								this.props.answered &&
+								<div className='stats'>
+									<div>Number of votes: { entry[1].votes.length }</div>
+									<div>{ (entry[1].votes.length / this.props.totalVotes * 100).toFixed(2) }% chose this answer.</div>
+								</div>
+							}
+						</div>
+					))
 				}
 			</div>
 		)
@@ -43,12 +42,26 @@ class Question extends React.Component {
 // Map State to Props
 // Get the details of the specific question
 function mapStateToProps({ questions, currentUser }, { match }) {
+	const originalQuestion = questions[match.params.id];
+	// move the question's potential answers to its own property; this is used by the template for more concise code
+	const quest = {
+		...originalQuestion,
+		options: {
+			optionOne: {
+			  ...originalQuestion.optionOne
+			},
+			optionTwo: {
+			  ...originalQuestion.optionTwo
+			}
+		}
+	}
+	
 	return {
-		question: questions[match.params.id],
+		question: quest,
 		// checks whether the user answered the question
-		answered: questions[match.params.id].optionOne.votes.includes(currentUser) || questions[match.params.id].optionTwo.votes.includes(currentUser),
+		answered: originalQuestion.optionOne.votes.includes(currentUser) || originalQuestion.optionTwo.votes.includes(currentUser),
 		// checks how many votes there are in total for the question
-		totalVotes: questions[match.params.id].optionOne.votes.length + questions[match.params.id].optionTwo.votes.length,
+		totalVotes: originalQuestion.optionOne.votes.length + originalQuestion.optionTwo.votes.length,
 		currentUser: currentUser
 	}
 }
