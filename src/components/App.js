@@ -10,6 +10,10 @@ import './App.css';
 import Home from './Home';
 import LoginPage from './LoginPage';
 import Question from './Question';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faArrowLeft);
 
 class App extends React.Component {
 	componentDidMount() {
