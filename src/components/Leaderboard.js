@@ -5,7 +5,28 @@ class Leaderboard extends React.Component {
 	// render method
 	render() {
 		return (
-			<div>hi</div>
+			<table>
+				<thead>
+					<tr>
+						<td>User Pic</td>
+						<td>User Name</td>
+						<td>Answered Questions</td>
+						<td>Asked Questions</td>
+					</tr>
+				</thead>
+				<tbody>
+					{
+						this.props.users.map(user => (
+							<tr key={user.id}>
+								<td>{ user.avatar }</td>
+								<td>{ user.name }</td>
+								<td>{ user.answers }</td>
+								<td>{ user.questions }</td>
+							</tr>
+						))
+					}
+				</tbody>
+			</table>
 		)
 	}
 }
@@ -16,6 +37,7 @@ function mapStateToProps({ users }) {
 	return {
 		users: Object.values(users).map(user => {
 			return {
+				id: user.id,
 				name: user.name,
 				avatar: user.avatarURL,
 				answers: Object.keys(user.answers).length,
