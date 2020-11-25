@@ -10,6 +10,7 @@ import './App.css';
 import Home from './Home';
 import LoginPage from './LoginPage';
 import Question from './Question';
+import NewQuestion from './NewQuestion';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faArrowLeft, faCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -34,6 +35,7 @@ class App extends React.Component {
 						? <div className="content">
 							<Route exact path='/' component={Home} />
 							<Route path='/question/:id' component={Question} />
+							<Route path='/add' component={NewQuestion} />
 						</div>
 						: <div className="content">
 							<LoginPage />
