@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect }  from 'react-redux';
+import { addQuestion } from '../actions/shared';
 
 class NewQuestion extends React.Component {
 	state = {
@@ -17,10 +18,24 @@ class NewQuestion extends React.Component {
 		}))
 	}
 	
+	// add the new question
+	addQuestion(event) {
+		event.preventDefault();
+		
+		// create the new question
+		const newQuestion= {
+			author: this.props.currentUser,
+			optionOneText: this.state.optionOne,
+			optionTwoText: this.state.optionTwo
+		};
+		
+		this.props.dispatch(addQuestion(newQuestion));
+	}
+	
 	// render method
 	render() {
 		return (
-			<form>
+			<form onSubmit={(e) => ( this.addQuestion(e) )}>
 				<label for='optionOneText'>Option one:</label>
 				<input type='text' id='optionOneText' placeholder='option one' value={this.state.optionOne} onChange={(e) => ( this.updateOptionText(e.target.value) )} />
 				<label for='optionTwoText'>Option one:</label>
