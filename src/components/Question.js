@@ -24,8 +24,9 @@ class Question extends React.Component {
 					Object.entries(this.props.question.options).map(entry => (
 						<div className='answer' key={entry[0]}>
 							<button id={entry[0]} disabled={this.props.answered === true} onClick={(e) => (this.answerQuestion(e.target.id))}>{ entry[1].text }</button>
-							{ 
-								this.props.answered &&
+							{ entry[1].votes.includes(this.props.currentUser) &&
+							  <FontAwesomeIcon icon='check' className='selected' /> }
+							{ this.props.answered &&
 								<div className='stats'>
 									<div>Number of votes: { entry[1].votes.length }</div>
 									<div>{ (entry[1].votes.length / this.props.totalVotes * 100).toFixed(2) }% chose this answer.</div>

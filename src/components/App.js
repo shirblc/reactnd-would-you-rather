@@ -11,9 +11,9 @@ import Home from './Home';
 import LoginPage from './LoginPage';
 import Question from './Question';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faCheck } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faArrowLeft);
+library.add(faArrowLeft, faCheck);
 
 class App extends React.Component {
 	componentDidMount() {

@@ -134,7 +134,7 @@ li {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 	align-content: space-around;
 	padding: 10px;
 	width: 35%;
@@ -149,6 +149,12 @@ li {
 	margin: 10px;
 	border: none;
 	border-radius: 10px;
+}
+
+/* Question component selected answer checkmark */
+.selected {
+	color: green;
+	width: 30px;
 }
 
 /* Question component answer stats */
