@@ -2,7 +2,7 @@ import { _getUsers } from '../_DATA.js';
 
 export const RECEIVE_DATA = 'RECEIVE_DATA';
 export const UPDATE_USER = 'UPDATE_USER';
-export const CREATE_QUESTION = 'CREATE_QUESTION';
+export const CREATE_QUESTION_USER = 'CREATE_QUESTION_USER';
 
 // Async action creator to get the initial users data from the mock API
 export function getInitialData() {
@@ -34,10 +34,10 @@ export function updateUser(questionData) {
 }
 
 // Action creator to add the new question to the user's questions array
-export function createUserQuestion({ qid, qUser })  {
+export function createUserQuestion({ id, author })  {
 	return {
-		type: CREATE_QUESTION,
-		qid,
-		qUser
+		type: CREATE_QUESTION_USER,
+		id,
+		author
 	}
 }
