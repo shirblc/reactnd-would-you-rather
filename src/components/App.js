@@ -11,6 +11,7 @@ import Home from './Home';
 import LoginPage from './LoginPage';
 import Question from './Question';
 import NewQuestion from './NewQuestion';
+import Leaderboard from './Leaderboard';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faArrowLeft, faCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -30,6 +31,7 @@ class App extends React.Component {
 					 <nav role='navigation'>
 						 <Link to='/' className='navLink'>Home</Link>
 						 <Link to='/add' className='navLink'>Add Question</Link>
+						 <Link to='/leaderboard' className='navLink'>Leaderboard</Link>
 					 </nav>
 				 </div>
 				 {
@@ -40,6 +42,7 @@ class App extends React.Component {
 							<Route exact path='/' component={Home} />
 							<Route path='/question/:id' component={Question} />
 							<Route path='/add' component={NewQuestion} />
+							<Route path='/leaderboard' component={Leaderboard} />
 						</div>
 						: <div className="content">
 							<LoginPage />
