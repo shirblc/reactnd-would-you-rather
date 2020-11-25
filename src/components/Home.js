@@ -1,11 +1,28 @@
+// React / Redux imports
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+// App imports
+import { logout } from '../actions/currentUser';
+
 class Home extends React.Component {
+	// CTOR
+	constructor(props) {
+		super(props);
+		// bind this in the logout method to the component, rather than the event target
+		this.logOutBound = this.logOut.bind(this);
+	}
+	
+	// Log out - responsible for logging the current user out
+	logOut() {
+		this.props.dispatch(logout());
+	}
+	
+	// render method
 	render() {
 		return (<div id='dashboard'>
-			<h2>{`${this.props.currentUser.name}'s Questions`}</h2>
+			<h2>{`${this.props.currentUser.name}'s Questions`}</h2> <button onClick={this.logOutBound}>Logout</button>
 			<div className='questionList'>
 				<h3>Unanswered Questions</h3>
 				<ul>
