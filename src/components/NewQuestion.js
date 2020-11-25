@@ -14,7 +14,7 @@ class NewQuestion extends React.Component {
 		const optionToUpdate = textBox.substring(0, textBox.length - 4);
 		// set the state
 		this.setState((currentState) => ({
-			currentState[optionToUpdate]: newText
+			[optionToUpdate]: newText
 		}))
 	}
 	
@@ -36,9 +36,9 @@ class NewQuestion extends React.Component {
 	render() {
 		return (
 			<form onSubmit={(e) => ( this.addQuestion(e) )}>
-				<label for='optionOneText'>Option one:</label>
-				<input type='text' id='optionOneText' placeholder='option one' value={this.state.optionOne} onChange={(e) => ( this.updateOptionText(e.target.value) )} />
-				<label for='optionTwoText'>Option one:</label>
+				<label htmlFor='optionOneText'>Option one:</label>
+				<input type='text' id='optionOneText' placeholder='option one' value={this.state.optionOne} onChange={(e) => ( this.updateOptionText(e.target.value, e.target.id) )} />
+				<label htmlFor='optionTwoText'>Option one:</label>
 				<input type='text' id='optionTwoText' placeholder='option two' value={this.state.optionTwo} onChange={(e) => ( this.updateOptionText(e.target.value, e.target.id) )} />
 				<button type='submit'>Add Question</button>
 			</form>
