@@ -72,6 +72,16 @@ h2 {
 	margin: 5px 20% 15px;
 }
 
+/* Label for the questions-to-view select */
+#selectLabel {
+	margin: 10px 10px 10px 15%;
+}
+
+/* Questions-to-view select */
+#viewQs {
+	margin: 10px 15% 10px 10px;
+}
+
 /* Home page questions list container */
 .questionList {
 	border: thin solid #000000;

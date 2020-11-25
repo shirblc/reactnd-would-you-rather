@@ -7,6 +7,10 @@ import { Link } from 'react-router-dom';
 import { logout } from '../actions/currentUser';
 
 class Home extends React.Component {
+	state = {
+		questions: 'unanswered'
+	}
+
 	// CTOR
 	constructor(props) {
 		super(props);
@@ -19,30 +23,48 @@ class Home extends React.Component {
 		this.props.dispatch(logout());
 	}
 	
+	// update the type of questions to be shown (answered/unanswered/all)
+	onUpdate(event) {
+		event.preventDefault();
+		this.setState({
+			questions: event.target.value
+		})
+	}
+	
 	// render method
 	render() {
 		return (<div id='dashboard'>
 			<h2>{`${this.props.currentUser.name}'s Questions`}</h2> <button onClick={this.logOutBound}>Logout</button>
-			<div className='questionList'>
-				<h3>Unanswered Questions</h3>
-				<ul>
-					{
-						this.props.questions.filter(q => q.answered === false).map(question => (
-							<li key={question.id}><Link to={`/question/${question.id}`}>{ question.option1 + ' or ' + question.option2 }</Link></li>
-						))
-					}
-				</ul>
-			</div>
-			<div className='questionList'>
-				<h3>Answered Questions</h3>
-				<ul>
-					{
-						this.props.questions.filter(q => q.answered === true).map(question => (
-							<li key={question.id}><Link to={`/question/${question.id}`}>{ question.option1 + ' or ' + question.option2 }</Link></li>
-						))
-					}
-				</ul>
-			</div>
+			<label htmlFor='viewQs' id='selectLabel'>Questions to view:</label>
+			<select value={this.state.questions} onChange={(e) => (this.onUpdate(e))} id='viewQs'>
+					<option value='unanswered'>Unanswered Questions</option>
+					<option value='answered'>Answered Questions</option>
+					<option value='all'>All Questions</option>
+				</select>
+			{ (this.state.questions === 'unanswered' || this.state.questions  === 'all') &&
+				<div className='questionList'>
+					<h3>Unanswered Questions</h3>
+					<ul>
+						{
+							this.props.questions.filter(q => q.answered === false).map(question => (
+								<li key={question.id}><Link to={`/question/${question.id}`}>{ question.option1 + ' or ' + question.option2 }</Link></li>
+							))
+						}
+					</ul>
+				</div>
+			}
+			{ (this.state.questions === 'answered' || this.state.questions  === 'all') &&
+				<div className='questionList'>
+					<h3>Answered Questions</h3>
+					<ul>
+						{
+							this.props.questions.filter(q => q.answered === true).map(question => (
+								<li key={question.id}><Link to={`/question/${question.id}`}>{ question.option1 + ' or ' + question.option2 }</Link></li>
+							))
+						}
+					</ul>
+				</div>
+			}
 		</div>)
 	}
 }
