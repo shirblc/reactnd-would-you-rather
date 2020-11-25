@@ -2,6 +2,7 @@ import { _getQuestions } from '../_DATA.js';
 
 export const RECEIVE_DATA = 'RECEIVE_DATA';
 export const UPDATE_QUESTION = 'UPDATE_QUESTION';
+export const CREATE_QUESTION = 'CREATE_QUESTION';
 
 // Async action creator to get the initial questions data from the mock API
 export function getInitialData() {
@@ -29,5 +30,13 @@ export function updateQuestion(questionData) {
 		authedUser,
 		qid,
 		answer
+	}
+}
+
+// Action creator to add a new question
+export function createQuestion(question) {
+	return {
+		type: CREATE_QUESTION,
+		question
 	}
 }
