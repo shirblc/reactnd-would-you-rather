@@ -5,7 +5,7 @@ class Leaderboard extends React.Component {
 	// render method
 	render() {
 		return (
-			<table>
+			<table id='leaderboard'>
 				<thead>
 					<tr>
 						<td>User Pic</td>

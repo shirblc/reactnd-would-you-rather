@@ -200,3 +200,28 @@ li {
 .stats div {
 	padding:  5px;
 }
+
+/* =================== Leader Component =================== */
+/* Leaderboard */
+#leaderboard {
+	margin: 5px 20%;
+	border-collapse: collapse;
+}
+
+/* Leaderboard head */
+thead {
+	font-weight: bold;
+}
+
+/* Leaderboard row */
+tr {
+	line-height: 1.5em;
+}
+
+/* Leaderboard cell */
+td {
+	text-align: center;
+	padding: 5px;
+	border-style: solid;
+	border-width: thin;
+}
