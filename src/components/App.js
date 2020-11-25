@@ -3,7 +3,7 @@ import React from 'react';
 import { getInitialData as getQuestions } from '../actions/questions';
 import { getInitialData as getUsers } from '../actions/users';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
 // App imports
 import './App.css';
@@ -27,6 +27,10 @@ class App extends React.Component {
 			 <div className="App">
 				 <div className="App-header">
 					 <h1>Would You Rather</h1>
+					 <nav role='navigation'>
+						 <Link to='/' className='navLink'>Home</Link>
+						 <Link to='/add' className='navLink'>Add Question</Link>
+					 </nav>
 				 </div>
 				 {
 					// if the data was fetched from the API into the state, check for currently logged in user
