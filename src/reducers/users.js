@@ -1,4 +1,4 @@
-import { RECEIVE_DATA, UPDATE_USER } from '../actions/users';
+import { RECEIVE_DATA, UPDATE_USER, CREATE_QUESTION } from '../actions/users';
 
 // Users reducer
 export default function usersReducer(state = {}, action) {
@@ -15,6 +15,15 @@ export default function usersReducer(state = {}, action) {
 					answers: {
 						[action.qid]: [action.answer]
 					}
+				}
+			}
+		// if the action is creating a new question, add the ID to the user's questions
+		case CREATE_QUESTION:
+			return {
+				...state,
+				[action.qUser]: {
+					...state[action.qUser],
+					questions: [ ...state[action.qUser].questions, action.qid ]
 				}
 			}
 		// otherwise return the state

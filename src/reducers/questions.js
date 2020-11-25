@@ -1,4 +1,4 @@
-import { RECEIVE_DATA, UPDATE_QUESTION } from '../actions/questions';
+import { RECEIVE_DATA, UPDATE_QUESTION, CREATE_QUESTION } from '../actions/questions';
 
 // Questions reducer
 export default function questionsReducer(state = {}, action) {
@@ -17,6 +17,12 @@ export default function questionsReducer(state = {}, action) {
 						votes: [ ...state[action.qid][action.answer].votes, action.authedUser ]
 					}
 				}
+			}
+		// if the action is adding a new question, add it to the list
+		case CREATE_QUESTION:
+			return {
+				...state,
+				[action.question['id']]: action.question
 			}
 		// otherwise return the state
 		default:
