@@ -11,7 +11,7 @@ export default function usersReducer(state = {}, action) {
 			return { 
 				...state,
 				[action.authedUser]: {
-					...[action.authedUser],
+					...state[action.authedUser],
 					answers: {
 						[action.qid]: [action.answer]
 					}
