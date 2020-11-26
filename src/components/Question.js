@@ -19,7 +19,11 @@ class Question extends React.Component {
 		return (
 			<div id='questionContainer'>
 				<Link to='/'><FontAwesomeIcon icon='arrow-left'/></Link>
-				<h3>Would you rather...</h3>
+				<img src={this.props.question.userPic} alt='user profile pic' className='profilePic' />
+				<div id='titleCont'>
+					<div>Asked:</div>
+					<h3>Would you rather...</h3>
+				</div>
 				{
 					Object.entries(this.props.question.options).map(entry => (
 						<div className='answer' key={entry[0]}>
@@ -42,11 +46,12 @@ class Question extends React.Component {
 
 // Map State to Props
 // Get the details of the specific question
-function mapStateToProps({ questions, currentUser }, { match }) {
+function mapStateToProps({ questions, currentUser, users }, { match }) {
 	const originalQuestion = questions[match.params.id];
 	// move the question's potential answers to its own property; this is used by the template for more concise code
 	const quest = {
 		...originalQuestion,
+		userPic: users[originalQuestion.author].avatarURL,
 		options: {
 			optionOne: {
 			  ...originalQuestion.optionOne
