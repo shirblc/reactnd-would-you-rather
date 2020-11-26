@@ -201,6 +201,41 @@ li {
 	padding:  5px;
 }
 
+/* =================== New Question Component =================== */
+/* Add question form */
+#newQuestion {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 5px 30%;
+	align-items: center;
+	justify-content: space-around;
+	align-content: space-around;
+}
+
+/* Add question title */
+#addTitle {
+	text-align: center;
+}
+
+/* Add question form label */
+#newQuestion label {
+	margin: 5px 10px;
+	font-size: 18px;
+}
+
+/* Add question form input */
+#newQuestion input {
+	width: 200px;
+}
+
+#newQuestion button {
+	padding: 5px;
+	font-size: 16px;
+	margin: 10px;
+	border: none;
+	border-radius: 10px;
+}
+
 /* =================== Leader Component =================== */
 /* Leaderboard */
 #leaderboard {

@@ -35,13 +35,17 @@ class NewQuestion extends React.Component {
 	// render method
 	render() {
 		return (
-			<form onSubmit={(e) => ( this.addQuestion(e) )}>
-				<label htmlFor='optionOneText'>Option one:</label>
-				<input type='text' id='optionOneText' placeholder='option one' value={this.state.optionOne} onChange={(e) => ( this.updateOptionText(e.target.value, e.target.id) )} />
-				<label htmlFor='optionTwoText'>Option one:</label>
-				<input type='text' id='optionTwoText' placeholder='option two' value={this.state.optionTwo} onChange={(e) => ( this.updateOptionText(e.target.value, e.target.id) )} />
-				<button type='submit'>Add Question</button>
-			</form>
+			<React.Fragment>
+				<h2 id='addTitle'>Add Question</h2>
+				<h3>Would you rather...</h3>
+				<form onSubmit={(e) => ( this.addQuestion(e) )} id='newQuestion'>
+					<label htmlFor='optionOneText'>Option One:</label>
+					<input type='text' id='optionOneText' placeholder='option one' value={this.state.optionOne} onChange={(e) => ( this.updateOptionText(e.target.value, e.target.id) )} />
+					<label htmlFor='optionTwoText'>Option Two:</label>
+					<input type='text' id='optionTwoText' placeholder='option two' value={this.state.optionTwo} onChange={(e) => ( this.updateOptionText(e.target.value, e.target.id) )} />
+					<button type='submit'>Add Question</button>
+				</form>
+			</React.Fragment>
 		)
 	}
 }
