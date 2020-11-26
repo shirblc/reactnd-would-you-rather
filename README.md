@@ -33,7 +33,8 @@ Contains the Redux store actions required to run the app. Actions are divided in
 
 1. **currentUser.js** - Contains actions relating to the currently logged in user, such as login and logout.
 2. **questions.js** - Contains actions relating to the game questions, such as adding initial data and adding new questions.
-3. **users.js** - Contains actions relating to the list of currently registered users, such as getting initial data.
+3. **shared.js** - Contains async action creators relating to both questions and users.
+4. **users.js** - Contains actions relating to the list of currently registered users, such as getting initial data.
 
 ### Components
 
@@ -43,8 +44,10 @@ Contains the app's components. These include:
 
 1. **App.js** (as well as App.css and App.test.js) - The App component. Includes all components in the app.
 2. **Home.js** - The Home component. Displays a list of links to answered and unanswered questions to the logged-in user.
-3. **LoginPage.js** - The LoginPage component. Contains a login page in which the user can set the currentUser.
-4. **Question.js** The Question component. Contains a Would You Rather question.
+3. **Leaderboard.js** - The Leaderboard component. Displays a table with the stats for all existing users.
+4. **LoginPage.js** - The LoginPage component. Contains a login page in which the user can set the currentUser.
+5. **NewQuestion.js** - The NewQuestion component. Contains a form with which the user can add a new question to the mock database.
+6. **Question.js** The Question component. Contains a Would You Rather question.
 
 ### Middleware
 
@@ -76,6 +79,10 @@ This project utilises several dependencies:
 4. **redux** and **react-redux** - Redux store and React-specific Redux bindings.
 5. **react-router-dom** - React's router.
 6. **redux-thunk** - A Redux middleware for handling asynchronous requests.
+7. **Font Awesome** - An icon library and toolkit ([Official site](https://fontawesome.com)). Contains the following dependencies:
+	- @fortawesome/fontawesome-svg-core - Library core package.
+	- @fortawesome/free-solid-svg-icons - The library's free solid icons.
+	- @fortawesome/react-fontawesome - The library's React integration.
 
 ## Mock-Server
 
