@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect }  from 'react-redux';
 import { addQuestion } from '../actions/shared';
+import { withRouter } from 'react-router-dom';
 
 class NewQuestion extends React.Component {
 	state = {
@@ -30,6 +31,8 @@ class NewQuestion extends React.Component {
 		};
 		
 		this.props.dispatch(addQuestion(newQuestion));
+		// redirect the user back to the home page
+		this.props.history.push('/');
 	}
 	
 	// render method
@@ -58,4 +61,4 @@ function mapStateToProps({ currentUser }) {
 	}
 }
 
-export default connect(mapStateToProps)(NewQuestion)
+export default connect(mapStateToProps)(withRouter(NewQuestion))
