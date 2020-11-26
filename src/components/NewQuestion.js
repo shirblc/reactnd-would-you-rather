@@ -18,6 +18,11 @@ class NewQuestion extends React.Component {
 			[optionToUpdate]: newText
 		}))
 	}
+
+	// check whether one or both of the text fields is still empty
+	checkEmptyFields = () => {
+		return this.state.optionOne.length === 0 || this.state.optionTwo.length === 0;
+	}
 	
 	// add the new question
 	addQuestion(event) {
@@ -46,7 +51,7 @@ class NewQuestion extends React.Component {
 					<input type='text' id='optionOneText' placeholder='option one' value={this.state.optionOne} onChange={(e) => ( this.updateOptionText(e.target.value, e.target.id) )} />
 					<label htmlFor='optionTwoText'>Option Two:</label>
 					<input type='text' id='optionTwoText' placeholder='option two' value={this.state.optionTwo} onChange={(e) => ( this.updateOptionText(e.target.value, e.target.id) )} />
-					<button type='submit'>Add Question</button>
+					<button type='submit' disabled={this.checkEmptyFields()}>Add Question</button>
 				</form>
 			</React.Fragment>
 		)
