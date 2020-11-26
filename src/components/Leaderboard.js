@@ -42,7 +42,9 @@ function mapStateToProps({ users }) {
 				avatar: user.avatarURL,
 				answers: Object.keys(user.answers).length,
 				questions: user.questions.length
-		}})
+		}}).sort((user1, user2) => { 
+			return ((user2.answers + user2.questions) - (user1.answers + user1.questions))
+		})
 	}
 }
 
