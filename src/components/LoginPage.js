@@ -17,20 +17,38 @@ class LoginPage extends React.Component {
 		this.onSubmit = this.logIn.bind(this);
 	}
 	
-	// Update the currently selected user ID
+	/*
+  	Function Name: updateID()
+  	Function Description: Update the currently selected user ID for login.
+  	Parameters: event (event) - <select> event.
+	----------------
+  	Programmer: Shir Bar Lev.
+  	*/
 	updateID(event) {
 		this.setState({
 			userID: event.target.value
 		});
 	}
 	
-	// Trigger login: change the currentUser to the selected user
+	/*
+  	Function Name: logIn()
+  	Function Description: Dispatches a request to login by changing the value of currentUser in the Store.
+  	Parameters: event (event) - login button click event.
+	----------------
+  	Programmer: Shir Bar Lev.
+  	*/
 	logIn(event) {
 		event.preventDefault();
 		this.props.dispatch(login(this.state.userID));
 	}
 
-	// Render method
+	/*
+  	Function Name: render()
+  	Function Description: Renders the component.
+  	Parameters: None.
+	----------------
+  	Programmer: Shir Bar Lev.
+  	*/
 	render() {
 		return (
 			<form onSubmit={this.onSubmit} id='loginForm'>

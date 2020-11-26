@@ -1,11 +1,20 @@
+// React / Redux imports
 import React from 'react';
 import { connect } from 'react-redux';
-import { addAnswer } from '../actions/shared';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+// App imports
+import { addAnswer } from '../actions/shared';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Question extends React.Component {
-	// Handles user click on one of the response buttons
+	/*
+  	Function Name: answerQuestion()
+  	Function Description: Handles user click on one of the response buttons (registering the user's response).
+  	Parameters: userResponse (string) - optionOne or optionTwo, depending on the user's choice.
+	----------------
+  	Programmer: Shir Bar Lev.
+  	*/
 	answerQuestion(userResponse) {
 		this.props.dispatch(addAnswer({
 			authedUser: this.props.currentUser,
@@ -14,7 +23,13 @@ class Question extends React.Component {
 		}));
 	}
 	
-	// render
+	/*
+  	Function Name: render()
+  	Function Description: Renders the component.
+  	Parameters: None.
+	----------------
+  	Programmer: Shir Bar Lev.
+  	*/
 	render() {
 		return (
 			<React.Fragment>

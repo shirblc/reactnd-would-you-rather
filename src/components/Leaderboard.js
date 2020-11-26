@@ -1,8 +1,15 @@
+// React / Redux imports
 import React from 'react';
 import { connect } from 'react-redux';
 
 class Leaderboard extends React.Component {
-	// render method
+	/*
+  	Function Name: render()
+  	Function Description: Renders the component.
+  	Parameters: None.
+	----------------
+  	Programmer: Shir Bar Lev.
+  	*/
 	render() {
 		return (
 			<table id='leaderboard'>

@@ -1,7 +1,10 @@
+// React / Redux imports
 import React from 'react';
 import { connect }  from 'react-redux';
-import { addQuestion } from '../actions/shared';
 import { withRouter } from 'react-router-dom';
+
+// App imports
+import { addQuestion } from '../actions/shared';
 
 class NewQuestion extends React.Component {
 	state = {
@@ -9,7 +12,14 @@ class NewQuestion extends React.Component {
 		optionTwo: ''
 	};
 	
-	// update the answer option as currently held by the component's state
+	/*
+  	Function Name: updateOptionText()
+  	Function Description: Updates the answer option as currently held by the component's state.
+  	Parameters: newText (string) - the new value of the input field.
+							textBox (string) - the ID of the input field.
+	----------------
+  	Programmer: Shir Bar Lev.
+  	*/
 	updateOptionText(newText, textBox) {
 		// get the option to update; the ID of the text field minus the 'text' in the end
 		const optionToUpdate = textBox.substring(0, textBox.length - 4);
@@ -19,12 +29,25 @@ class NewQuestion extends React.Component {
 		}))
 	}
 
-	// check whether one or both of the text fields is still empty
+	/*
+  	Function Name: checkEmptyFields()
+  	Function Description: Checks whether one or both of the text fields is still empty. Used to disable the 'add question' button.
+  	Parameters: None.
+	----------------
+  	Programmer: Shir Bar Lev.
+  	*/
 	checkEmptyFields = () => {
 		return this.state.optionOne.length === 0 || this.state.optionTwo.length === 0;
 	}
 	
-	// add the new question
+	/*
+  	Function Name: addQuestion()
+  	Function Description: Grabs the options the user typed into the text fields, dispatches a request to create a new question and redirects the user
+											back to the home screen.
+  	Parameters: event (event) - Form submission event.
+	----------------
+  	Programmer: Shir Bar Lev.
+  	*/
 	addQuestion(event) {
 		event.preventDefault();
 		
@@ -40,7 +63,13 @@ class NewQuestion extends React.Component {
 		this.props.history.push('/');
 	}
 	
-	// render method
+	/*
+  	Function Name: render()
+  	Function Description: Renders the component.
+  	Parameters: None.
+	----------------
+  	Programmer: Shir Bar Lev.
+  	*/
 	render() {
 		return (
 			<React.Fragment>

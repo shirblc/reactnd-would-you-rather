@@ -1,7 +1,5 @@
 // React / Redux imports
 import React from 'react';
-import { getInitialData as getQuestions } from '../actions/questions';
-import { getInitialData as getUsers } from '../actions/users';
 import { connect } from 'react-redux';
 import { Route, Link } from 'react-router-dom';
 
@@ -12,17 +10,34 @@ import LoginPage from './LoginPage';
 import Question from './Question';
 import NewQuestion from './NewQuestion';
 import Leaderboard from './Leaderboard';
+import { getInitialData as getQuestions } from '../actions/questions';
+import { getInitialData as getUsers } from '../actions/users';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faArrowLeft, faCheck } from '@fortawesome/free-solid-svg-icons';
 
+// Font Awesome library init
 library.add(faArrowLeft, faCheck);
 
 class App extends React.Component {
+	/*
+  	Function Name: componentDidMount()
+  	Function Description: Dispatches an action to get the questions and users upon inserting the component into the DOM. This method is automatically triggered by React.
+  	Parameters: None.
+	----------------
+  	Programmer: Shir Bar Lev.
+  	*/
 	componentDidMount() {
 		this.props.dispatch(getQuestions());
 		this.props.dispatch(getUsers());
 	}
 	
+	/*
+  	Function Name: render()
+  	Function Description: Renders the component.
+  	Parameters: None.
+	----------------
+  	Programmer: Shir Bar Lev.
+  	*/
 	render() {
 		 return (
 			 <div className="App">

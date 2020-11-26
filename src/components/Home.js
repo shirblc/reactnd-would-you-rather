@@ -18,12 +18,24 @@ class Home extends React.Component {
 		this.logOutBound = this.logOut.bind(this);
 	}
 	
-	// Log out - responsible for logging the current user out
+	/*
+  	Function Name: logOut()
+  	Function Description: Dispatches a request to log the current user out.
+  	Parameters: None.
+	----------------
+  	Programmer: Shir Bar Lev.
+  	*/
 	logOut() {
 		this.props.dispatch(logout());
 	}
 	
-	// update the type of questions to be shown (answered/unanswered/all)
+	/*
+  	Function Name: onUpdate()
+  	Function Description: Update the type of questions to be shown (answered/unanswered/all).
+  	Parameters: event (event) - <select> event.
+	----------------
+  	Programmer: Shir Bar Lev.
+  	*/
 	onUpdate(event) {
 		event.preventDefault();
 		this.setState({
@@ -31,7 +43,13 @@ class Home extends React.Component {
 		})
 	}
 	
-	// render method
+	/*
+  	Function Name: render()
+  	Function Description: Renders the component.
+  	Parameters: None.
+	----------------
+  	Programmer: Shir Bar Lev.
+  	*/
 	render() {
 		return (<div id='dashboard'>
 			<h2>{`${this.props.currentUser.name}'s Questions`}</h2> <button onClick={this.logOutBound}>Logout</button>
