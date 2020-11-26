@@ -260,3 +260,8 @@ td {
 	border-style: solid;
 	border-width: thin;
 }
+
+/* Leaderboard profile pic */
+#leaderboard .profilePic {
+	width: 64px;
+}

@@ -18,7 +18,7 @@ class Leaderboard extends React.Component {
 					{
 						this.props.users.map(user => (
 							<tr key={user.id}>
-								<td>{ user.avatar }</td>
+								<td><img src={user.avatar} alt='user profile pic' className='profilePic' /></td>
 								<td>{ user.name }</td>
 								<td>{ user.answers }</td>
 								<td>{ user.questions }</td>
