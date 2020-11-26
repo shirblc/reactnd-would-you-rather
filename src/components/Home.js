@@ -80,8 +80,11 @@ function mapStateToProps({ users, questions, currentUser }) {
 				option1: entry[1].optionOne.text, 
 				option2: entry[1].optionTwo.text,
 				answered: entry[1].optionOne.votes.includes(currentUser) || entry[1].optionTwo.votes.includes(currentUser),
-				id: entry[0]
+				id: entry[0],
+				timestamp: entry[1].timestamp
 			}
+		}).sort((question1, question2) => {
+			return (question2.timestamp - question1.timestamp);
 		})
 	}
 }
